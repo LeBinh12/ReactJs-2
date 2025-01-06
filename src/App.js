@@ -69,6 +69,7 @@ function App() {
         <section>
           {colorList.map(colorBiNgan => (
             <>
+              <li Key={colorBiNgan}>{colorBiNgan}</li>
               <ColorBox color={colorBiNgan} />
             </>
                   
