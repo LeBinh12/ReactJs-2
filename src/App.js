@@ -1,6 +1,4 @@
-import logo from './logo.svg';
-import './App.css';
-import ColorBox from './Component/Color';
+import TodoList from './Features/Todo';
 /*
 Props tức là dữ liệu truyền từ dữ liệu tk cha xuống con, và nó thể thay đổi đc ở tk con
 */
@@ -8,74 +6,10 @@ Props tức là dữ liệu truyền từ dữ liệu tk cha xuống con, và n�
 function App() {
 
   //------------------------------ Phần học ------------------------------
-  const name = 'Lê Phước Bình';
-  const age = '20';
-  const student = {
-    name: 'Information Technology'
-  };
-  const colorList = [
-    'red',
-    'blue',
-    'green',
-  ]
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Họ tên: {name} - {age} tuổi</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-        </a>
-
-        {/* Condition cách 1*/
-          age >= 18 ? <p> trên 18</p> : <p> Dưới 18 </p>
-
-          /* Condition cách 2*/
-        } {
-          age >= 18 &&
-          <>
-            <p> trên 18</p>
-            <p> trên 18</p>
-            <p> trên 18</p>
-
-          </>
-        } {
-          age <= 18 &&
-          <>
-            <p> Dưới 18</p>
-            <p> Dưới 18</p>
-            <p> Dưới 18</p>
-
-          </>
-        }
-        
-
-
-        
-
-        {/* Render object */
-          <p>Ngành học: {student.name}</p>
-        }
-        {/* Render Array */}
-
-
-
-        <h3>Ý nghĩa các màu hoa 'Bỉ Ngạn'</h3>
-
-        <section>
-          {colorList.map(colorBiNgan => (
-            <>
-              <li Key={colorBiNgan}>{colorBiNgan}</li>
-              <ColorBox color={colorBiNgan} />
-            </>
-                  
-          ))}
-        </section>
-      </header>
+      <TodoList/>
     </div>
   );
 
