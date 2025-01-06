@@ -1,5 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
+import ColorBox from './Component/Color';
+/*
+Props tức là dữ liệu truyền từ dữ liệu tk cha xuống con, và nó thể thay đổi đc ở tk con
+*/
 
 function App() {
   return (
@@ -15,7 +19,11 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          <section>
+            <ColorBox color='white' />
+            <ColorBox color='red'/>
+            <ColorBox color='green'/>
+          </section>
         </a>
       </header>
     </div>

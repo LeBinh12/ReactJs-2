@@ -2,6 +2,19 @@
   text-align: center;
 }
 
+section {
+  display: flex;
+}
+
+.box{
+    margin: 10px;
+    width: 100px;
+    height: 50px;
+    border-radius: 7px;
+}
+
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
