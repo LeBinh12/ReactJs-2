@@ -5,7 +5,7 @@ import Album from './Features/Album/components/Album';
 import TodoFeature from './Features/Todo';
 import TodoList from './Features/Todo';
 
-import { Route,Routes } from "react-router-dom";
+import { Route,Routes,Link, NavLink } from "react-router-dom";
 /*
 Props tức là dữ liệu truyền từ dữ liệu tk cha xuống con, và nó thể thay đổi đc ở tk con
 */
@@ -16,7 +16,18 @@ function App() {
 
   return (
       <div className="App">
-        <h3>Home Page</h3>
+      <h3>Home Page</h3>
+      <p><Link to='/todos'>Todo</Link></p>
+      <p><Link to='/albums'>Album</Link></p>
+      
+      <p><NavLink to='/todos'>Todo</NavLink></p>
+      <p><NavLink to='/albums'>Album</NavLink></p>
+      
+      {/* Khác nhau giữa Link và NavLink là khi chọn NavLink thì nó sẽ tự động tạo className để nhận biệt xem 
+          Bạn đang chọn cái gì để dễ dàng thiết kế
+      */}
+      
+
         <Routes>
           <Route path="/todos" Component={TodoFeature} />
           <Route path="/albums" Component={AlbumFeatures} />
