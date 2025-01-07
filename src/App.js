@@ -25,13 +25,20 @@ function App() {
       
       {/* Khác nhau giữa Link và NavLink là khi chọn NavLink thì nó sẽ tự động tạo className để nhận biệt xem 
           Bạn đang chọn cái gì để dễ dàng thiết kế
+
+          Về phần Switch thì nhưng phiên bản cũ có thể sai nhưng sau này phiên bản v6 trở lên nó đã thay thế
+          bằng <Routes> chức năng nó cũng như switch, cùng 1 thời điểm nó chỉ render route đầu tiên khớp với URL
       */}
       
+      
 
-        <Routes>
+      
+      <Routes>
+          <Route path="/todos" Component={TodoFeature} />
+          <Route path="/todos" Component={TodoFeature} />
           <Route path="/todos" Component={TodoFeature} />
           <Route path="/albums" Component={AlbumFeatures} />
-        </Routes>
+      </Routes>
       </div>
   );
 
