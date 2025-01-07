@@ -1,82 +1,26 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import TodoList from './Components/TodoList';
-
-TodoFeature.propTypes = {
-    
-};
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import DetailPage from './Page/DetailPage';
+import ListPage from './Page/ListPage';
 
 function TodoFeature(props) {
 
-
-    const initTodoList = [
-        {
-            id: 1,
-            title: 'Eat',
-            status: 'new'
-
-        },
-        {
-            id: 2,
-            title: 'Sleep',
-            status: 'completed'
-
-        },
-        {
-            id: 3,
-            title: 'Code',
-            status: 'new'
-
-        },
-    ];
-
-    const [todoList, setTodoList] = useState(initTodoList); 
-
-    const [filteredStatus, setFilteredStatus] = useState('all');
-
-    const handleTodoList = (todo, index) => {
-        //taoj ra 1 mangx mowi
-        const newTodoList = [...todoList];
-
-        console.log(todo, index);
-        
-        //thay doi
-
-        newTodoList[index] = {
-            ...newTodoList[index],
-            status: newTodoList[index].status === 'new' ? 'completed' : 'new',
-        }
-
-        // cap nhat todo list
-
-        setTodoList(newTodoList);
-    }
-
-    const handleShowAllClick = () => {
-        setFilteredStatus('all');
-    }
-    const handleShowCompletedClick = () => { 
-        setFilteredStatus('completed');
-    }
-    const handleShowNewClick = () => {
-        setFilteredStatus('new');
-    }
-
-    const renderedTodoList = todoList.filter(todo => filteredStatus === 'all'
-        || filteredStatus === todo.status);
-    
-    console.log(renderedTodoList);
-
+/* 
+        Trong v6 thì chúng ta không cần gán lại link của tk ch nữa 
+        Và để truyền tham số lên link thì ở Route của tk ch bạn phải có \* ở cuối path để nó gán giá trị
+        nếu bạn muốn truyền theo kiểu http://localhost:3000/todos/page=1&size=10
+        thì ta chỉ cần sử dụng link cha sao /todos?page=${page}&size=${size}
+*/
     return (
         <div>
-            <h3>Todo List</h3>
-            <TodoList todoList={renderedTodoList} onTodoClick={handleTodoList} />
+            
+            <Routes>
+                {/* Định nghĩa route cho danh sách todo */}
+                <Route path='/' element={<ListPage />} />
 
-
-            <button onClick={handleShowAllClick} >Show All</button>
-            <button onClick={handleShowCompletedClick} >Show Completed</button>
-            <button onClick={handleShowNewClick} >Show New</button>
-
+                {/* Định nghĩa route cho chi tiết todo */}
+                <Route path=':todoId' element={<DetailPage />} />
+            </Routes>
         </div>
     );
 }

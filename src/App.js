@@ -6,6 +6,7 @@ import TodoFeature from './Features/Todo';
 import TodoList from './Features/Todo';
 
 import { Route,Routes,Link, NavLink, Navigate } from "react-router-dom";
+import ListPage from './Features/Todo/Page/ListPage';
 /*
 Props tức là dữ liệu truyền từ dữ liệu tk cha xuống con, và nó thể thay đổi đc ở tk con
 */
@@ -15,13 +16,8 @@ function App() {
   //------------------------------ Phần học ------------------------------
 
   return (
-      <div className="App">
+    <div className="App">
       <h3>Home Page</h3>
-      <p><Link to='/todos'>Todo</Link></p>
-      <p><Link to='/albums'>Album</Link></p>
-      
-      <p><NavLink to='/todos'>Todo</NavLink></p>
-      <p><NavLink to='/albums'>Album</NavLink></p>
       
       {/* Khác nhau giữa Link và NavLink là khi chọn NavLink thì nó sẽ tự động tạo className để nhận biệt xem 
           Bạn đang chọn cái gì để dễ dàng thiết kế
@@ -34,14 +30,9 @@ function App() {
            vì nó đã hỗ trợ hết
       */}
       
-      
-
-      
       <Routes>
-        <Route path="/home" element={<Navigate to="/" />} /> {/* Đây là câu lệnh mà bạn phải đi
-         chính xác đường dẫn nhất "/home" để đi về trang "/" */}
-        <Route path="/" element={<TodoFeature />} />
-        <Route path="/todos" element={<TodoFeature />} />
+        <Route path="/" element={<ListPage />} />
+        <Route path="/todos/*" element={<TodoFeature />} />
         <Route path="/albums" element={<AlbumFeatures />} />
       </Routes>
       </div>

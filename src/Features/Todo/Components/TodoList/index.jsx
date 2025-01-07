@@ -5,8 +5,8 @@ import './style.scss';
 
 
 TodoList.propTypes = {
-    todoList: PropTypes.array,
-    onTodoClick: PropTypes.func,
+    todoList: PropTypes.array.isRequired,       // Mảng todo được truyền vào
+    onTodoClick: PropTypes.func.isRequired,
 };
 
 TodoList.defaultProps = {
@@ -41,6 +41,8 @@ function TodoList(props) {
 
                 </li>
             ))}
+
+
         </ul>
     );
 }
