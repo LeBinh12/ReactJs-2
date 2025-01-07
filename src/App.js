@@ -1,3 +1,5 @@
+import ColorBox from './Components/ColorBox';
+import Counter from './Components/Counter';
 import AlbumFeatures from './Features/Album';
 import Album from './Features/Album/components/Album';
 import TodoList from './Features/Todo';
@@ -12,7 +14,9 @@ function App() {
   return (
     <div className="App">
       {/* <TodoList/> */}
-      <AlbumFeatures />
+      {/* <AlbumFeatures /> */}
+      <ColorBox></ColorBox>
+      <Counter></Counter>
     </div>
   );
 
