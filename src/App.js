@@ -13,10 +13,10 @@ function App() {
 
   return (
     <div className="App">
-      {/* <TodoList/> */}
+      <TodoList/>
       {/* <AlbumFeatures /> */}
-      <ColorBox></ColorBox>
-      <Counter></Counter>
+      {/* <ColorBox></ColorBox>
+      <Counter></Counter> */}
     </div>
   );
 
