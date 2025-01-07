@@ -2,7 +2,10 @@ import ColorBox from './Components/ColorBox';
 import Counter from './Components/Counter';
 import AlbumFeatures from './Features/Album';
 import Album from './Features/Album/components/Album';
+import TodoFeature from './Features/Todo';
 import TodoList from './Features/Todo';
+
+import { Route,Routes } from "react-router-dom";
 /*
 Props tức là dữ liệu truyền từ dữ liệu tk cha xuống con, và nó thể thay đổi đc ở tk con
 */
@@ -12,12 +15,13 @@ function App() {
   //------------------------------ Phần học ------------------------------
 
   return (
-    <div className="App">
-      <TodoList/>
-      {/* <AlbumFeatures /> */}
-      {/* <ColorBox></ColorBox>
-      <Counter></Counter> */}
-    </div>
+      <div className="App">
+        <h3>Home Page</h3>
+        <Routes>
+          <Route path="/todos" Component={TodoFeature} />
+          <Route path="/albums" Component={AlbumFeatures} />
+        </Routes>
+      </div>
   );
 
   //------------------------------ Phần tự tìm hiểu --------------------------------
