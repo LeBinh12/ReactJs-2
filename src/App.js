@@ -5,7 +5,7 @@ import Album from './Features/Album/components/Album';
 import TodoFeature from './Features/Todo';
 import TodoList from './Features/Todo';
 
-import { Route,Routes,Link, NavLink } from "react-router-dom";
+import { Route,Routes,Link, NavLink, Navigate } from "react-router-dom";
 /*
 Props tức là dữ liệu truyền từ dữ liệu tk cha xuống con, và nó thể thay đổi đc ở tk con
 */
@@ -28,16 +28,21 @@ function App() {
 
           Về phần Switch thì nhưng phiên bản cũ có thể sai nhưng sau này phiên bản v6 trở lên nó đã thay thế
           bằng <Routes> chức năng nó cũng như switch, cùng 1 thời điểm nó chỉ render route đầu tiên khớp với URL
+
+
+          Trong React Router v6, Redirect đã bị thay thế bằng Navigate, và cũng không có exact trong Routes
+           vì nó đã hỗ trợ hết
       */}
       
       
 
       
       <Routes>
-          <Route path="/todos" Component={TodoFeature} />
-          <Route path="/todos" Component={TodoFeature} />
-          <Route path="/todos" Component={TodoFeature} />
-          <Route path="/albums" Component={AlbumFeatures} />
+        <Route path="/home" element={<Navigate to="/" />} /> {/* Đây là câu lệnh mà bạn phải đi
+         chính xác đường dẫn nhất "/home" để đi về trang "/" */}
+        <Route path="/" element={<TodoFeature />} />
+        <Route path="/todos" element={<TodoFeature />} />
+        <Route path="/albums" element={<AlbumFeatures />} />
       </Routes>
       </div>
   );
