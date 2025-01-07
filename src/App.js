@@ -1,3 +1,5 @@
+import AlbumFeatures from './Features/Album';
+import Album from './Features/Album/components/Album';
 import TodoList from './Features/Todo';
 /*
 Props tức là dữ liệu truyền từ dữ liệu tk cha xuống con, và nó thể thay đổi đc ở tk con
@@ -9,7 +11,8 @@ function App() {
 
   return (
     <div className="App">
-      <TodoList/>
+      {/* <TodoList/> */}
+      <AlbumFeatures />
     </div>
   );
 
