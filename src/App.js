@@ -18,6 +18,10 @@ function App() {
   return (
     <div className="App">
       <h3>Home Page</h3>
+
+
+      <p><NavLink to='/todos'>Todo</NavLink></p>
+      <p><NavLink to='/albums'>Album</NavLink></p>
       
       {/* Khác nhau giữa Link và NavLink là khi chọn NavLink thì nó sẽ tự động tạo className để nhận biệt xem 
           Bạn đang chọn cái gì để dễ dàng thiết kế
