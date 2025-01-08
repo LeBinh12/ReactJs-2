@@ -1,30 +1,42 @@
-import ColorBox from './Components/ColorBox';
-import Counter from './Components/Counter';
 import AlbumFeatures from './Features/Album';
-import Album from './Features/Album/components/Album';
 import TodoFeature from './Features/Todo';
-import TodoList from './Features/Todo';
-
-import { Route,Routes,Link, NavLink, Navigate } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { Route, Routes, NavLink } from 'react-router-dom';
 import ListPage from './Features/Todo/Page/ListPage';
 import NotFound from './Components/NotFound';
+import productsApi from './Api/productApi';
+
 /*
 Props tức là dữ liệu truyền từ dữ liệu tk cha xuống con, và nó thể thay đổi đc ở tk con
 */
 
 function App() {
-
   //------------------------------ Phần học ------------------------------
+
+  useEffect(() => {
+    const fetchProduct = async () => { 
+      const productListId = await productsApi.get(1);
+      const productList = await productsApi.getAll();
+      console.log(productListId);
+    }
+
+    fetchProduct();
+  },[]);
+
 
   return (
     <div className="App">
       <h3>Home Page</h3>
 
+      <p>
+        <NavLink to="/todos">Todo</NavLink>
+      </p>
+      <p>
+        <NavLink to="/albums">Album</NavLink>
+      </p>
 
-      <p><NavLink to='/todos'>Todo</NavLink></p>
-      <p><NavLink to='/albums'>Album</NavLink></p>
-      
-      {/* Khác nhau giữa Link và NavLink là khi chọn NavLink thì nó sẽ tự động tạo className để nhận biệt xem 
+      {/*
+           Khác nhau giữa Link và NavLink là khi chọn NavLink thì nó sẽ tự động tạo className để nhận biệt xem 
           Bạn đang chọn cái gì để dễ dàng thiết kế
 
           Về phần Switch thì nhưng phiên bản cũ có thể sai nhưng sau này phiên bản v6 trở lên nó đã thay thế
@@ -34,16 +46,28 @@ function App() {
           Trong React Router v6, Redirect đã bị thay thế bằng Navigate, và cũng không có exact trong Routes
            vì nó đã hỗ trợ hết
       */}
-      
+
       <Routes>
-        <Route path="/" element={<ListPage />} />
-        <Route path="/todos/*" element={<TodoFeature />} />
-        <Route path="/albums" element={<AlbumFeatures />} />
+        <Route
+          path="/"
+          element={<ListPage />}
+        />
+        <Route
+          path="/todos/*"
+          element={<TodoFeature />}
+        />
+        <Route
+          path="/albums"
+          element={<AlbumFeatures />}
+        />
 
         {/* Cách để handle ra trường hợp NotFound */}
-        <Route path='*' element={<NotFound></NotFound>}/>
+        <Route
+          path="*"
+          element={<NotFound></NotFound>}
+        />
       </Routes>
-      </div>
+    </div>
   );
 
   //------------------------------ Phần tự tìm hiểu --------------------------------
@@ -62,12 +86,12 @@ function App() {
   // ]
   // const profession = [{
   //   id: '1',
-  //   name: 'Information technology', 
+  //   name: 'Information technology',
   // }, {
   //   id: '2',
   //   name: 'Math teacher'
   // }
-  
+
   // ];
   // const colorList = [
   //   {
@@ -83,7 +107,6 @@ function App() {
   //     description: 'Bỉ xanh hi vọng tương lai gặp lại'
   //   },
   // ];
-
 
   // // Phần tự tìm hiểu::::
   // function Getprofession(id) {
@@ -118,7 +141,7 @@ function App() {
   //             </div>
   //           </>
   //         ))
-           
+
   //       }
   //       <a
   //         className="App-link"
@@ -138,7 +161,7 @@ function App() {
   //           <ColorBox color={colorBiNgan.color} />
   //           <p>{colorBiNgan.description}</p>
   //         </>
-                  
+
   //       ))}
   //       </section>
   //     </header>
