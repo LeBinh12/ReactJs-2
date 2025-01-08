@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import TodoList from '../../Components/TodoList';
+import { useLocation } from 'react-router-dom';
+import queryString from 'query-string';
 
 ListPage.propTypes = {
     
@@ -28,9 +30,15 @@ function ListPage(props) {
         },
     ];
 
+    const location = useLocation();
+
     const [todoList, setTodoList] = useState(initTodoList); 
 
-    const [filteredStatus, setFilteredStatus] = useState('all');
+    const [filteredStatus, setFilteredStatus] = useState(() => {
+        const params = queryString.parse(location.search);
+        // console.log(params.status);
+        return params.status || 'all';
+    });
 
     const handleTodoList = (todo, index) => {
         //taoj ra 1 mangx mowi
