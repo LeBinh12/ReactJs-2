@@ -7,6 +7,7 @@ import TodoList from './Features/Todo';
 
 import { Route,Routes,Link, NavLink, Navigate } from "react-router-dom";
 import ListPage from './Features/Todo/Page/ListPage';
+import NotFound from './Components/NotFound';
 /*
 Props tức là dữ liệu truyền từ dữ liệu tk cha xuống con, và nó thể thay đổi đc ở tk con
 */
@@ -38,6 +39,9 @@ function App() {
         <Route path="/" element={<ListPage />} />
         <Route path="/todos/*" element={<TodoFeature />} />
         <Route path="/albums" element={<AlbumFeatures />} />
+
+        {/* Cách để handle ra trường hợp NotFound */}
+        <Route path='*' element={<NotFound></NotFound>}/>
       </Routes>
       </div>
   );

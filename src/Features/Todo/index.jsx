@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import DetailPage from './Page/DetailPage';
 import ListPage from './Page/ListPage';
+import NotFound from '../../Components/NotFound';
 
 function TodoFeature(props) {
 
@@ -20,6 +21,8 @@ function TodoFeature(props) {
 
                 {/* Định nghĩa route cho chi tiết todo */}
                 <Route path=':todoId' element={<DetailPage />} />
+
+                <Route path='*' element={<NotFound></NotFound>}/>
             </Routes>
         </div>
     );
