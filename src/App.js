@@ -5,6 +5,7 @@ import { Route, Routes, NavLink } from 'react-router-dom';
 import ListPage from './Features/Todo/Page/ListPage';
 import NotFound from './Components/NotFound';
 import productsApi from './Api/productApi';
+import CounterFeature from './Features/Couter';
 
 /*
 Props tức là dữ liệu truyền từ dữ liệu tk cha xuống con, và nó thể thay đổi đc ở tk con
@@ -50,7 +51,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<ListPage />}
+          element={<CounterFeature />}
         />
         <Route
           path="/todos/*"
