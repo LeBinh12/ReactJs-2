@@ -6,10 +6,20 @@ import ListPage from './Features/Todo/Page/ListPage';
 import NotFound from './Components/NotFound';
 import productsApi from './Api/productApi';
 import CounterFeature from './Features/Couter';
+import style from 'styled-components'
+
 
 /*
 Props tức là dữ liệu truyền từ dữ liệu tk cha xuống con, và nó thể thay đổi đc ở tk con
 */
+
+
+const Title = style.h1`
+    text-align: center;
+    font-weight: bold;
+
+    color: ${props => props.color || "green"};
+`
 
 function App() {
   //------------------------------ Phần học ------------------------------
@@ -27,7 +37,7 @@ function App() {
 
   return (
     <div className="App">
-      <h3>Home Page</h3>
+      <Title color="brown">Herder</Title>
 
       <p>
         <NavLink to="/todos">Todo</NavLink>

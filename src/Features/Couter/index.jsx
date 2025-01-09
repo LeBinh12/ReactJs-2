@@ -1,6 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { decrease, increase } from './CouterSilce';
+import styles from './style.module.css';
+
 
 CounterFeature.propTypes = {
     
@@ -21,7 +23,7 @@ function CounterFeature(props) {
     }
 
     return (
-        <div>
+        <div className={styles.counter}>
             Count: {counter}
             <div>
                 <button onClick={handleIncreaseClick}>Add 1</button>

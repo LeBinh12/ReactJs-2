@@ -1,8 +1,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import DetailPage from './Page/DetailPage';
-import ListPage from './Page/ListPage';
 import NotFound from '../../Components/NotFound';
+import ListPage from './Page/ListPage';
+import DetailPage from './Page/DetailPage';
 
 function TodoFeature(props) {
 
