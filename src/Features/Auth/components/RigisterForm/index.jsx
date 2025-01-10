@@ -36,6 +36,14 @@ function RigisterForm(props) {
 
   const schema = yup.object({
     // title: yup.string().required('Bạn cần nhập Họ và Tên').min(5, 'Bạn cần nhập trên 5 ký tự'),
+    fullname: yup.string()
+                  .required('Bạn cần nhập Họ và Tên')
+                  .test("Bạn cần nhập 2 ký tự trở lên",
+                  "Bạn đã cần phải nhập Họ và tên", (value) => {
+                    console.log("value", value)
+                    return value.split(" ").length >=2
+                  }
+    )
   });
 
   const form = useForm({
