@@ -4,13 +4,14 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import InputField from '../../../../Components/form-control/InputInfield';
-import { Avatar, Button, Typography } from '@mui/material';
+import { Avatar, Button, LinearProgress, Typography } from '@mui/material';
 import { LockOutlined } from '@mui/icons-material';
 import { makeStyles } from '@mui/styles';
 import PasswordField from 'Components/form-control/PasswordField';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    position: 'relative',
     paddingTop: 15,
   },
 
@@ -23,6 +24,13 @@ const useStyles = makeStyles((theme) => ({
   },
 
   submit: {},
+
+  progress: {
+    position: 'absolute',
+    paddingBottom: 1,
+    left: 0,
+    right: 0,
+  },
 }));
 
 RigisterForm.propTypes = {
@@ -60,18 +68,25 @@ function RigisterForm(props) {
     resolver: yupResolver(schema),
   });
 
-  const handleSubmit = (value) => {
+  const handleSubmit = async (value) => {
     // console.log('Todo Form: ', value);
 
     const { onSubmit } = props;
     if (onSubmit) {
-      onSubmit(value);
+      await onSubmit(value);
     }
 
     form.reset();
   };
+
+  const { isSubmitting } = form.formState;
+
   return (
     <div className={classes.root}>
+
+      {isSubmitting && <LinearProgress className={ classes.progress } />}
+
+
       <Avatar className={classes.avatar}>
         <LockOutlined></LockOutlined>
       </Avatar>
@@ -105,6 +120,7 @@ function RigisterForm(props) {
           label="Nhập lại mật khẩu"
         />
         <Button
+          disabled={isSubmitting}
           type="submit"
           variant="contained"
           color="primary"
