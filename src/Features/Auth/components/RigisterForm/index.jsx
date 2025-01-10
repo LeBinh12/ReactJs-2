@@ -43,7 +43,10 @@ function RigisterForm(props) {
                     console.log("value", value)
                     return value.split(" ").length >=2
                   }
-    )
+    ),
+    email: yup.string()
+              .required("Bạn cần nhập email")
+              .email("Bạn cần nhập địa chỉ email của bạn")
   });
 
   const form = useForm({
