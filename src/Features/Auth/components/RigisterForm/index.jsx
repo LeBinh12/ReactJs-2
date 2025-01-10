@@ -9,22 +9,20 @@ import { LockOutlined } from '@mui/icons-material';
 import { makeStyles } from '@mui/styles';
 import PasswordField from 'Components/form-control/PasswordField';
 
-
 const useStyles = makeStyles((theme) => ({
-    root: {
-      paddingTop: 15
+  root: {
+    paddingTop: 15,
   },
 
   avatar: {
     margin: '0 auto',
   },
 
-title: {
-      textAlign: 'center'
+  title: {
+    textAlign: 'center',
   },
 
-    submit: {
-  },
+  submit: {},
 }));
 
 RigisterForm.propTypes = {
@@ -36,17 +34,20 @@ function RigisterForm(props) {
 
   const schema = yup.object({
     // title: yup.string().required('Bạn cần nhập Họ và Tên').min(5, 'Bạn cần nhập trên 5 ký tự'),
-    fullname: yup.string()
-                  .required('Bạn cần nhập Họ và Tên')
-                  .test("Bạn cần nhập 2 ký tự trở lên",
-                  "Bạn đã cần phải nhập Họ và tên", (value) => {
-                    console.log("value", value)
-                    return value.split(" ").length >=2
-                  }
-    ),
-    email: yup.string()
-              .required("Bạn cần nhập email")
-              .email("Bạn cần nhập địa chỉ email của bạn")
+    fullname: yup
+      .string()
+      .required('Bạn cần nhập Họ và Tên')
+      .test('Bạn cần nhập 2 ký tự trở lên', 'Bạn đã cần phải nhập Họ và tên', (value) => {
+        console.log('value', value);
+        return value.split(' ').length >= 2;
+      }),
+    email: yup.string().required('Bạn cần nhập email').email('Bạn cần nhập địa chỉ email của bạn'),
+    password: yup.string().required('Bạn cần nhập mật khẩu').min(6, 'Bạn cần nhập trên 6 ký tự'),
+
+    changePassword: yup
+      .string()
+      .required('Bạn cần nhập lại mật khẩu!')
+      .oneOf([yup.ref('password')], "Mật khẩu của bạn không trùng khớp"),
   });
 
   const form = useForm({
@@ -104,7 +105,7 @@ function RigisterForm(props) {
           label="Nhập lại mật khẩu"
         />
         <Button
-          type='submit'
+          type="submit"
           variant="contained"
           color="primary"
           className={classes.submit}
