@@ -4,7 +4,7 @@ import axiosClient from "./axiosClient";
 
 const userApi = {
     register(data) {
-        const url = `/user`;
+        const url = `/users`;
         return axiosClient.post(url,data);
     },
 };

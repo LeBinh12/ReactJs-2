@@ -1,16 +1,15 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import userApi from 'Api/userApi';
 
-const register = createAsyncThunk(
+export const  register = createAsyncThunk(
     'users/register',
     async (payLoad) => {
         // call API
         const data = await userApi.register(payLoad);
+        localStorage.setItem('data', JSON.stringify(data));
 
-        localStorage.setItem('data', JSON.stringify(data.data));
 
-
-        return data.data;
+        return data;
     },
   )
   
