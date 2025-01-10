@@ -4,11 +4,16 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import { makeStyles } from '@mui/styles';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { NavLink, Link } from 'react-router-dom';
+
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Register from '../../Features/Auth/components/Rigister';
 const useStyles = makeStyles({
   root: {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
@@ -19,13 +24,23 @@ const useStyles = makeStyles({
     height: 30,
     padding: '0 30px',
   },
-    link: {
-        textDecoration: 'none',
-        color: 'white',
-  }
+  link: {
+    textDecoration: 'none',
+    color: 'white',
+  },
 });
 
 export default function Header() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const classes = useStyles();
 
   return (
@@ -38,19 +53,51 @@ export default function Header() {
             component="div"
             sx={{ flexGrow: 1 }}
           >
-            <Link to="/" className={classes.link}>Shọp pe</Link>
+            <Link
+              to="/"
+              className={classes.link}
+            >
+              Shọp pe
+            </Link>
           </Typography>
-          <NavLink className={classes.link} to="/todos">
+          <NavLink
+            className={classes.link}
+            to="/todos"
+          >
             <Button color="inherit">Todo</Button>
           </NavLink>
 
-          <NavLink className={classes.link} to="/albums">
+          <NavLink
+            className={classes.link}
+            to="/albums"
+          >
             <Button color="inherit">Album</Button>
           </NavLink>
 
-          <Button color="inherit">Đăng ký</Button>
+          <Button color="inherit" onClick={handleClickOpen}>Đăng ký</Button>
         </Toolbar>
       </AppBar>
+
+      <Dialog
+        disableEscapeKeyDown
+        open={open}
+        onClose={(event, reason) => {
+            if (reason === 'backdropClick') {
+              return;
+            }
+            handleClose();
+          }}        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+                <Register />
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Đóng</Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 }

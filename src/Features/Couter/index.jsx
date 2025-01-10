@@ -17,35 +17,43 @@ const useStyles = makeStyles({
   },
 });
 
-CounterFeature.propTypes = {
-    
-};
+CounterFeature.propTypes = {};
 
 function CounterFeature(props) {
-    const classes = useStyles();
+  const classes = useStyles();
 
-    const counter = useSelector(state => state.count);
-    const dispatch = useDispatch()
+  const counter = useSelector((state) => state.count);
+  const dispatch = useDispatch();
 
-    const handleIncreaseClick = () => { 
-        const action = increase();
-        dispatch(action);   
-    }
+  const handleIncreaseClick = () => {
+    const action = increase();
+    dispatch(action);
+  };
 
-    const handleDecreaseClick = () => { 
-        const action = decrease();
-        dispatch(action);   
-    }
+  const handleDecreaseClick = () => {
+    const action = decrease();
+    dispatch(action);
+  };
 
-    return (
-        <div className={styles.counter}>
-            Count: {counter}
-            <div>
-                <Button className={classes.root} onClick={handleIncreaseClick}>Add 1</Button>
-                <Button className={classes.root} onClick={handleDecreaseClick}>Tru 1</Button>
-            </div>
-        </div>
-    );
+  return (
+    <div className={styles.counter}>
+      Count: {counter}
+      <div>
+        <Button
+          className={classes.root}
+          onClick={handleIncreaseClick}
+        >
+          Add 1
+        </Button>
+        <Button
+          className={classes.root}
+          onClick={handleDecreaseClick}
+        >
+          Tru 1
+        </Button>
+      </div>
+    </div>
+  );
 }
 
 export default CounterFeature;
