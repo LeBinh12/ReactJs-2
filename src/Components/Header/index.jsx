@@ -91,7 +91,7 @@ export default function Header() {
       >
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-                <Register />
+            <Register closeDialog={ handleClose } />
           </DialogContentText>
         </DialogContent>
         <DialogActions>
