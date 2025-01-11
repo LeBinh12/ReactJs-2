@@ -14,9 +14,10 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Register from '../../Features/Auth/components/Rigister';
-import { IconButton } from '@mui/material';
-import { Close } from '@mui/icons-material';
+import { Avatar, Icon, IconButton } from '@mui/material';
+import { AccountCircle, Close } from '@mui/icons-material';
 import Login from 'Features/Auth/components/Login';
+import { useSelector } from 'react-redux';
 const useStyles = makeStyles({
   root: {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
@@ -46,6 +47,8 @@ const MODE = {
 }
 
 export default function Header() {
+  const loggedInUser = useSelector(state => state.user.current);
+  const isLogged = !!loggedInUser.id;
   const [open, setOpen] = React.useState(false);
   const [mode, setMode] = React.useState(MODE.LOGIN);
 
@@ -90,7 +93,15 @@ export default function Header() {
             <Button color="inherit">Album</Button>
           </NavLink>
 
-          <Button color="inherit" onClick={handleClickOpen}>Đăng ký</Button>
+          {!isLogged && (
+            <Button color="inherit" onClick={handleClickOpen}>Đăng nhập</Button>
+          )}
+          {isLogged && (
+            <IconButton color="inherit">
+                <AccountCircle/>
+            </IconButton>
+          )}
+
         </Toolbar>
       </AppBar>
 
