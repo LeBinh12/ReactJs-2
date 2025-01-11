@@ -75,8 +75,6 @@ function RigisterForm(props) {
     if (onSubmit) {
       await onSubmit(value);
     }
-
-    form.reset();
   };
 
   const { isSubmitting } = form.formState;

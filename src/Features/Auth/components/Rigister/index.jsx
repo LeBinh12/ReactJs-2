@@ -24,10 +24,10 @@ function Register(props) {
         }
         
           console.log('New User: ', user);
-          enqueueSnackbar("Tạo thành công!", {variant: 'success'})
+          enqueueSnackbar("Tạo tài khoản thành công!!", {variant: 'success'})
       } catch (error) {
         console.log('Error: ', error);
-        enqueueSnackbar("Tạo thất bại!", {variant: 'error'});
+        enqueueSnackbar(error.message, {variant: 'error'});
 
     }
   };

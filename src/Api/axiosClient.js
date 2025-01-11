@@ -23,6 +23,14 @@ axiosClient.interceptors.response.use(function (response) {
     // Do something with response data
     return response.data.data;
   }, function (error) {
+
+  console.log("Message Error: ", error.response);
+  const {status, data} = error.response;
+  
+  if (status === 400) {
+    const firstError = data.message;
+    throw new Error(firstError)
+  }
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
     return Promise.reject(error);
