@@ -1,12 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import userApi from 'Api/userApi';
+import StorageKeys from 'constants/storage-keys';
 
 export const  register = createAsyncThunk(
     'users/register',
     async (payLoad) => {
         // call API
         const data = await userApi.register(payLoad);
-        localStorage.setItem('data', JSON.stringify(data));
+        localStorage.setItem(StorageKeys.DATA, JSON.stringify(data));
 
 
         return data;
@@ -18,7 +19,7 @@ export const  login = createAsyncThunk(
   async (payLoad) => {
       // call API
       const data = await userApi.login(payLoad);
-      localStorage.setItem('data', JSON.stringify(data));
+      localStorage.setItem(StorageKeys.DATA, JSON.stringify(data));
 
 
       return data;
@@ -38,6 +39,9 @@ const userSlice = createSlice({
   
    extraReducers: (builder) => {
     builder.addCase(register.fulfilled, (state, action) => {
+      state.current = action.payload; // Sử dụng "action.payload" đúng
+    });
+    builder.addCase(login.fulfilled, (state, action) => {
       state.current = action.payload; // Sử dụng "action.payload" đúng
     });
   },
