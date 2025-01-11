@@ -10,6 +10,7 @@ import style from 'styled-components'
 import Header from './Components/Header';
 import { Button } from '@mui/material';
 import { useSnackbar } from 'notistack';
+import ProductFeatures from 'Features/Product';
 
 
 /*
@@ -72,6 +73,10 @@ function App() {
         <Route
           path="*"
           element={<NotFound></NotFound>}
+        />
+        <Route
+          path="/products"
+          element={<ProductFeatures/>}
         />
       </Routes>
     </div>

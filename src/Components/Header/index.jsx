@@ -108,6 +108,12 @@ export default function Header() {
           >
             <Button color="inherit">Album</Button>
           </NavLink>
+          <NavLink
+            className={classes.link}
+            to="/products"
+          >
+            <Button color="inherit">Products</Button>
+          </NavLink>
 
           {!isLogged && (
             <Button
