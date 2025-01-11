@@ -7,6 +7,10 @@ const userApi = {
         const url = `/users`;
         return axiosClient.post(url,data);
     },
+    login(data) {
+        const url = `/login`;
+        return axiosClient.post(url,data);
+    }
 };
 
 export default userApi;

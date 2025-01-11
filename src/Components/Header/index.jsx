@@ -16,6 +16,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Register from '../../Features/Auth/components/Rigister';
 import { IconButton } from '@mui/material';
 import { Close } from '@mui/icons-material';
+import Login from 'Features/Auth/components/Login';
 const useStyles = makeStyles({
   root: {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
@@ -103,7 +104,8 @@ export default function Header() {
         </IconButton>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            <Register closeDialog={ handleClose } />
+            {/* <Register closeDialog={handleClose} /> */}
+            <Login closeDialog={ handleClose } />
           </DialogContentText>
         </DialogContent>
         <DialogActions>

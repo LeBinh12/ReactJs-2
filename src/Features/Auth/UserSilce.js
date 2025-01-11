@@ -11,7 +11,19 @@ export const  register = createAsyncThunk(
 
         return data;
     },
-  )
+)
+  
+export const  login = createAsyncThunk(
+  'users/login',
+  async (payLoad) => {
+      // call API
+      const data = await userApi.login(payLoad);
+      localStorage.setItem('data', JSON.stringify(data));
+
+
+      return data;
+  },
+)
   
 
 const userSlice = createSlice({
