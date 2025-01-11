@@ -123,6 +123,7 @@ function RigisterForm(props) {
           variant="contained"
           color="primary"
           className={classes.submit}
+          size='large'
         >
           Tạo tài khoản
         </Button>

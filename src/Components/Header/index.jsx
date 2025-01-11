@@ -14,6 +14,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Register from '../../Features/Auth/components/Rigister';
+import { IconButton } from '@mui/material';
+import { Close } from '@mui/icons-material';
 const useStyles = makeStyles({
   root: {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
@@ -27,6 +29,13 @@ const useStyles = makeStyles({
   link: {
     textDecoration: 'none',
     color: 'white',
+  },
+  closeButton: {
+    position: 'absolute',
+    top: '8px',
+    right: '8px',
+    color: 'grey',
+    zIndex: 1,
   },
 });
 
@@ -89,6 +98,9 @@ export default function Header() {
           }}        aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
+        <IconButton className={classes.closeButton} onClick={handleClose}>
+          <Close />
+        </IconButton>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             <Register closeDialog={ handleClose } />
