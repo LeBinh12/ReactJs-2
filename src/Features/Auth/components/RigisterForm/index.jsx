@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   progress: {
     position: 'absolute',
     paddingBottom: 1,
-    left: 0,
+    left: 0,  
     right: 0,
   },
 }));

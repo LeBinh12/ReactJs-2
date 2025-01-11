@@ -8,6 +8,8 @@ import productsApi from './Api/productApi';
 import CounterFeature from './Features/Couter';
 import style from 'styled-components'
 import Header from './Components/Header';
+import { Button } from '@mui/material';
+import { useSnackbar } from 'notistack';
 
 
 /*
@@ -27,11 +29,19 @@ function App() {
     fetchProduct();
   },[]);
 
+  const { enqueueSnackbar } = useSnackbar();
+
+  const ShowNoti = () => { 
+      enqueueSnackbar('Fell',{variant: 'error'})
+  }
 
   return (
     <div className="App">
-      <Header></Header>
-
+      <Header>
+      </Header>
+      <Button onClick={ShowNoti}>
+          Shownoti
+        </Button>
       {/*
            Khác nhau giữa Link và NavLink là khi chọn NavLink thì nó sẽ tự động tạo className để nhận biệt xem 
           Bạn đang chọn cái gì để dễ dàng thiết kế
