@@ -98,11 +98,11 @@ function LoginForm(props) {
           disabled={isSubmitting}
           type="submit"
           variant="contained"
-          color="primary"
+          color="success"
           className={classes.submit}
           size='large'
         >
-          Tạo tài khoản
+          Đăng nhập
         </Button>
       </form>
     </div>

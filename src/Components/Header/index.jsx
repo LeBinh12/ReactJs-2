@@ -40,8 +40,14 @@ const useStyles = makeStyles({
   },
 });
 
+const MODE = {
+  LOGIN: "login",
+  REGISTER: "register",
+}
+
 export default function Header() {
   const [open, setOpen] = React.useState(false);
+  const [mode, setMode] = React.useState(MODE.LOGIN);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -104,8 +110,27 @@ export default function Header() {
         </IconButton>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            {/* <Register closeDialog={handleClose} /> */}
+            {mode === MODE.REGISTER && (
+              <>
+                <Register closeDialog={handleClose} />
+                <Box textAlign="center">
+                  <Button color="primary" onClick={() => setMode(MODE.LOGIN)}>
+                      Khi bạn có tài khoản, hãy đăng nhập ở đây
+                  </Button>
+                </Box>
+              </>
+            )}
+
+            {mode === MODE.LOGIN && (
+              <>
             <Login closeDialog={ handleClose } />
+            <Box textAlign="center">
+                  <Button color="primary" onClick={() => setMode(MODE.REGISTER)}>
+                      Nếu bạn chưa có tài khoản, hày tạo tài khoản ở đây
+                  </Button>
+                </Box>
+              </>
+            )}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
