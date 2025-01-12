@@ -10,7 +10,7 @@ InputField.propTypes = {
 };
 
 function InputField(props) {
-  const { form, name, label, disabled } = props;
+  const { form, name, label, type ,disabled } = props;
 
   const {
     formState: { errors },
@@ -25,6 +25,7 @@ function InputField(props) {
         <TextField
           {...field}
           fullWidth
+          type={type || 'text'}
           margin='normal'
           variant='outlined'
           label={label}

@@ -22,9 +22,8 @@ function App() {
 
   useEffect(() => {
     const fetchProduct = async () => { 
-      const productListId = await productsApi.get(1);
       const productList = await productsApi.getAll();
-      console.log(productListId);
+      console.log(productList);
     }
 
     fetchProduct();
@@ -43,6 +42,7 @@ function App() {
       <Button onClick={ShowNoti}>
           Shownoti
         </Button>
+    
       {/*
            Khác nhau giữa Link và NavLink là khi chọn NavLink thì nó sẽ tự động tạo className để nhận biệt xem 
           Bạn đang chọn cái gì để dễ dàng thiết kế

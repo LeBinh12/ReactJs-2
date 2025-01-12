@@ -1,7 +1,7 @@
 import React from 'react';
 import RigisterForm from '../RigisterForm';
 import { useDispatch } from 'react-redux';
-import { register } from 'Features/Auth/UserSilce';
+import { register } from 'Features/Auth/UserSilce/UserSilce';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useSnackbar } from 'notistack';
 import PropTypes from 'prop-types';

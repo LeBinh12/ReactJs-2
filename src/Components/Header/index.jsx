@@ -18,7 +18,7 @@ import { Avatar, Icon, IconButton, Menu, MenuItem, MenuList } from '@mui/materia
 import { AccountCircle, Close } from '@mui/icons-material';
 import Login from 'Features/Auth/components/Login';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from 'Features/Auth/UserSilce';
+import { logout } from 'Features/Auth/UserSilce/UserSilce';
 const useStyles = makeStyles({
   root: {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
