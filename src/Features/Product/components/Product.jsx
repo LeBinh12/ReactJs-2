@@ -19,7 +19,13 @@ function Product({ product }) {
                 } alt={product.name} width="100%" />
                 </Box>
                 <Typography variant="body2">{product.name}</Typography>
-                <Typography variant="body2">{ product.price }</Typography>
+                <Typography variant="body2">
+                    <Box component="span" fontSize="16px" fontWeight="bold" mr={1}>
+                        {  new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price,)}
+                    </Box>
+                    {product.sale > 0 ?`-${product.sale}%` : ""}
+                
+                </Typography>
             </Box>
         </div>
     );
