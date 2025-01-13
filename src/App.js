@@ -12,7 +12,6 @@ import { Button } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import ProductFeatures from 'Features/Product';
 
-
 /*
 Props tức là dữ liệu truyền từ dữ liệu tk cha xuống con, và nó thể thay đổi đc ở tk con
 */
@@ -23,6 +22,8 @@ function App() {
   useEffect(() => {
     const fetchProduct = async () => { 
       const productList = await productsApi.getAll();
+      const productTest = await productsApi.getProductTest();
+      console.log("Data Test: ", productTest);
       console.log(productList);
     }
 

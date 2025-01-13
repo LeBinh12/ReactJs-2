@@ -13,6 +13,7 @@ import { makeStyles } from '@mui/styles';
 import AddProducts from 'Features/Auth/components/Products';
 import { useEffect } from 'react';
 
+
 const formatCurrency = (amount) => {
   return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
 };
@@ -51,6 +52,7 @@ const useStyles = makeStyles({
 
 export default function ProductList() {
   const classes = useStyles();
+  const [search, setSearch] = React.useState("");
   const [products, setProducts] = React.useState([]);
   const [productId, setProductId] = React.useState(null);
   const [productIdDelete, setProductIdDelete] = React.useState(null);
@@ -183,7 +185,6 @@ export default function ProductList() {
                 productIdDelete={productIdDelete}
                 onUpdateSuccess={handleProductUpdate}
                 onDeleteSuccess={handleProductDelete}
-
               />
             </>
           </DialogContentText>

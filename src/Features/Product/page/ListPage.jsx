@@ -1,7 +1,32 @@
-import React from 'react';
-import { Box, Container, Grid, Paper } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { Box, Container, Grid, Paper, Typography } from '@mui/material';
+import productsApi from 'Api/productApi';
+import ProductSkeletonList from '../components/ProductSkeletonList';
+import ProductList from '../components/ProductList';
 
 function ListPage() {
+  const [productList, setProductList] = useState([]);
+  const [loading, setLoding] = useState(true);
+
+  
+
+  useEffect(() => {
+    (async () => {
+
+      try {
+        const response = await productsApi.getAll();
+        console.log("Data", response);
+        setProductList(response);
+      } catch (error) {
+        console.log("Error", error);
+      }
+
+      setLoding(false);
+      
+    })();
+  }, []);
+
+    
   return (
     <div>
       <Box>
@@ -27,7 +52,9 @@ function ListPage() {
               sm={9}
               sx={{ flexGrow: 1 }}
             >
-              <Paper elevation={3}>Right Column</Paper>
+              <Paper elevation={3}>
+                {loading ? <ProductSkeletonList /> : <ProductList data={ productList } />}
+              </Paper>
             </Grid>
           </Grid>
         </Container>

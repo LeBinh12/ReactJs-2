@@ -1,9 +1,17 @@
 import axiosClient from './axiosClient';
-
+import productTest from '../product.json'
 const productsApi = {
   async getAll(params) {
         const url = '/products';
         return axiosClient.get(url);
+  },
+  getProductTest() {
+    const url = productTest;
+    return url;
+  },
+  addProductTest() {
+    const url = productTest;
+    return url;
   },
   get(id) {
     const url = `/product/${id}`;
@@ -21,6 +29,10 @@ const productsApi = {
     const url = `/product/${id}`;
     return axiosClient.delete(url);
   },
+  search(params) {
+    const url = '/products/search';
+    return axiosClient.get(url, { params });
+  }
 };
 
 export default productsApi;

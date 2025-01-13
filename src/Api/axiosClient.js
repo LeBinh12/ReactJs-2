@@ -36,24 +36,20 @@ axiosClient.interceptors.response.use(
     const { status, data } = error.response;
 
     if (status === 400) {
-      // Lỗi thường gặp, ví dụ: Validation Error
       const errorMessage = data.message || 'Có lỗi xảy ra. Vui lòng thử lại sau!';
       throw new Error(errorMessage);
     }
 
     if (status === 401) {
-      // Lỗi xác thực (Token hết hạn, chưa đăng nhập, v.v.)
       const errorMessage = 'Phiên làm việc hết hạn, vui lòng đăng nhập lại.';
       throw new Error(errorMessage);
     }
 
     if (status === 500) {
-      // Lỗi server
       const errorMessage = 'Có sự cố với server. Vui lòng thử lại sau.';
       throw new Error(errorMessage);
     }
 
-    // Xử lý các lỗi khác (403, 404, v.v.)
     const genericErrorMessage = 'Đã xảy ra lỗi, vui lòng thử lại.';
     throw new Error(genericErrorMessage);
   }

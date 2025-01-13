@@ -1,0 +1,16 @@
+{
+    "status":200,
+    "data": [
+      {
+        "id": 1,
+        "name": "Sản phẩm A",
+        "price": 100
+      },
+      {
+        "id": 2,
+        "name": "Sản phẩm B",
+        "price": 200
+      }
+    ]
+  }
+  

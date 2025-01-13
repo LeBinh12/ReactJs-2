@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Route, Routes } from 'react-router-dom';
 import ListPage from './page/ListPage';
 import { Box } from '@mui/material';
-import ProductList from './page/ProductList';
 
 ProductFeatures.propTypes = {};
 
@@ -13,7 +12,7 @@ function ProductFeatures(props) {
       <Routes>
         <Route
           path="/"
-          element={<ProductList />}
+          element={<ListPage />}
         ></Route>
       </Routes>
     </Box>

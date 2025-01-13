@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { useSnackbar } from 'notistack';
 import { addProduct, DeleteProduct, updateProduct } from 'Features/Auth/ProductSlice/ProductSlice';
 import { unwrapResult } from '@reduxjs/toolkit';
-import ProductList from 'Features/Product/page/ProductList';
+import ProductList from 'Features/Product/page/ProductListTest';
 import { useForm } from 'react-hook-form';
 import productsApi from 'Api/productApi';
 
@@ -17,7 +17,7 @@ AddProduct.propTypes = {
 };
 
 function AddProduct(props) {
-    const { productId, productIdDelete, onUpdateSuccess } = props;
+  const { productId, productIdDelete, onUpdateSuccess } = props;
   const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
@@ -27,7 +27,6 @@ function AddProduct(props) {
       // cập nhật sản phẩm
       try {
         if (productId != null) {
-      
           const action = updateProduct(values);
           const resultAction = await dispatch(action);
           const user = unwrapResult(resultAction);
@@ -36,7 +35,6 @@ function AddProduct(props) {
           if (closeDialog) {
             closeDialog();
           }
-                
 
           console.log('Sản phẩm mới: ', user);
           enqueueSnackbar('Cập nhật sản phẩm thành công', { variant: 'success' });
@@ -49,13 +47,12 @@ function AddProduct(props) {
         /// Xóa sản phẩm
         else if (productIdDelete != null) {
           try {
-
             await productsApi.remove(productIdDelete);
-                            
+
             if (onUpdateSuccess) {
               onUpdateSuccess();
             }
-              
+
             console.log('Xóa dữ liệu id: ' + productIdDelete);
             enqueueSnackbar('Xóa sản phẩm thành công', { variant: 'success' });
           } catch (error) {
@@ -76,18 +73,20 @@ function AddProduct(props) {
 
           console.log('Sản phẩm mới: ', user);
           enqueueSnackbar('Thêm tài sản phẩm thành công', { variant: 'success' });
-                
         }
       } catch (error) {
         console.log('Error: ', error);
         enqueueSnackbar(error.message, { variant: 'error' });
-          
       }
     }
   };
   return (
     <div>
-      <AddProductForm onSubmit={handleSubmit} productId={productId} productIdDelete={productIdDelete} />
+      <AddProductForm
+        onSubmit={handleSubmit}
+        productId={productId}
+        productIdDelete={productIdDelete}
+      />
     </div>
   );
 }
