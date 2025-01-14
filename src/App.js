@@ -19,30 +19,10 @@ Props tức là dữ liệu truyền từ dữ liệu tk cha xuống con, và n�
 function App() {
   //------------------------------ Phần học ------------------------------
 
-  useEffect(() => {
-    const fetchProduct = async () => { 
-      const productList = await productsApi.getAll();
-      const productTest = await productsApi.getProductTest();
-      console.log("Data Test: ", productTest);
-      console.log(productList);
-    }
-
-    fetchProduct();
-  },[]);
-
-  const { enqueueSnackbar } = useSnackbar();
-
-  const ShowNoti = () => { 
-      enqueueSnackbar('Fell',{variant: 'error'})
-  }
-
   return (
     <div className="App">
       <Header>
       </Header>
-      <Button onClick={ShowNoti}>
-          Shownoti
-        </Button>
     
       {/*
            Khác nhau giữa Link và NavLink là khi chọn NavLink thì nó sẽ tự động tạo className để nhận biệt xem 

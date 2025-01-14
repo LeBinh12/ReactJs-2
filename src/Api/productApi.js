@@ -3,7 +3,7 @@ import productTest from '../product.json'
 const productsApi = {
   async getAll(params) {
         const url = '/products';
-        return axiosClient.get(url);
+        return axiosClient.get(url,{params});
   },
   getProductTest() {
     const url = productTest;

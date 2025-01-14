@@ -28,7 +28,7 @@ axiosClient.interceptors.request.use(
 axiosClient.interceptors.response.use(
   function (response) {
     // Giả sử API trả về kết quả trong `data.data` (như bạn đã làm)
-    return response.data.data;
+    return response.data;
   },
   function (error) {
     console.error('API Error Response:', error.response); // Log chi tiết lỗi
