@@ -4,6 +4,7 @@ import productsApi from 'Api/productApi';
 import ProductSkeletonList from '../components/ProductSkeletonList';
 import ProductList from '../components/ProductList';
 import { makeStyles } from '@mui/styles';
+import ProductSort from '../components/ProductSort';
 
 const useStyle = makeStyles((theme) => ({
   root: {},
@@ -29,6 +30,8 @@ function ListPage() {
   const [filter, setFilter] = useState({
     _page: 1,
     _limit: 6,
+    order: 'asc',
+    sort_by: 'price'
   });
 
   useEffect(() => {
@@ -52,6 +55,13 @@ function ListPage() {
     setFilter((prevFilters) => ({
       ...prevFilters,
       _page: page,
+    }));
+  };
+
+  const handleSortChange = (newSortValue) => {
+    setFilter((prevFilters) => ({
+      ...prevFilters,
+      order: newSortValue,
     }));
   };
 
@@ -81,6 +91,11 @@ function ListPage() {
               sx={{ flexGrow: 1 }}
             >
               <Paper elevation={3}>
+                <ProductSort
+                  currentSort={filter.order}
+                  onChange={handleSortChange}
+                />
+
                 {loading ? <ProductSkeletonList length={6} /> : <ProductList data={productList} />}
                 <Box className={classes.pagination}>
                   <Pagination
