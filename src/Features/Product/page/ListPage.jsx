@@ -3,8 +3,22 @@ import { Box, Container, Grid, Pagination, Paper, Typography } from '@mui/materi
 import productsApi from 'Api/productApi';
 import ProductSkeletonList from '../components/ProductSkeletonList';
 import ProductList from '../components/ProductList';
+import { makeStyles } from '@mui/styles';
+
+const useStyle = makeStyles((theme) => ({
+  root: {},
+
+  pagination: {
+    display: 'flex',
+    flexFlow: 'row',
+    justifyContent: 'center',
+    marginTop: '30px',
+    paddingBottom: '20px',
+  },
+}));
 
 function ListPage() {
+  const classes = useStyle();
   const [productList, setProductList] = useState([]);
   const [loading, setLoding] = useState(true);
   const [pagination, setPagination] = useState({
@@ -34,14 +48,12 @@ function ListPage() {
     })();
   }, [filter]);
 
-
   const handlePageChange = (e, page) => {
     setFilter((prevFilters) => ({
       ...prevFilters,
-      _page: page,  
+      _page: page,
     }));
-  }
-  
+  };
 
   return (
     <div>
@@ -70,14 +82,14 @@ function ListPage() {
             >
               <Paper elevation={3}>
                 {loading ? <ProductSkeletonList length={6} /> : <ProductList data={productList} />}
-
-                <Pagination
-                  color="primary"
-                  count={Math.ceil(pagination.total / pagination.limit)}
-                  page={pagination.page}
-                  onChange={handlePageChange}
-                ></Pagination>
-
+                <Box className={classes.pagination}>
+                  <Pagination
+                    color="primary"
+                    count={Math.ceil(pagination.total / pagination.limit)}
+                    page={pagination.page}
+                    onChange={handlePageChange}
+                  ></Pagination>
+                </Box>
               </Paper>
             </Grid>
           </Grid>

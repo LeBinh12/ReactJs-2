@@ -13,7 +13,7 @@ function Product({ product }) {
     return (
         <div>
             <Box padding={1}>
-                <Box padding={1}>
+                <Box padding={1} minHeight="215px">
                     <img src={thumbnail
                         
                 } alt={product.name} width="100%" />
