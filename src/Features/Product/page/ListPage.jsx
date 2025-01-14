@@ -5,6 +5,7 @@ import ProductSkeletonList from '../components/ProductSkeletonList';
 import ProductList from '../components/ProductList';
 import { makeStyles } from '@mui/styles';
 import ProductSort from '../components/ProductSort';
+import ProductFilter from '../components/ProductFilter';
 
 const useStyle = makeStyles((theme) => ({
   root: {},
@@ -31,7 +32,7 @@ function ListPage() {
     _page: 1,
     _limit: 6,
     order: 'asc',
-    sort_by: 'price'
+    sort_by: 'price',
   });
 
   useEffect(() => {
@@ -39,8 +40,6 @@ function ListPage() {
       try {
         const { data, pagination } = await productsApi.getAll(filter);
 
-        console.log('Data', data, pagination);
-        console.log('Page: ' + pagination.page);
         setProductList(data);
         setPagination(pagination);
       } catch (error) {
@@ -65,6 +64,13 @@ function ListPage() {
     }));
   };
 
+  const handleFilterChange = (newFilter) => {
+    setFilter((prevFilters) => ({
+      ...prevFilters,
+      ...newFilter,
+    }));
+  };
+
   return (
     <div>
       <Box>
@@ -80,7 +86,10 @@ function ListPage() {
               sm={3}
               sx={{ width: '250px' }}
             >
-              <Paper elevation={3}>Left column</Paper>
+              <Paper elevation={3}>
+                <ProductFilter filter={filter} onChange={handleFilterChange} />
+                
+              </Paper>
             </Grid>
 
             {/* Cột phải: Linh hoạt */}
