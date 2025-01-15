@@ -39,6 +39,7 @@ function ListPage() {
     (async () => {
       try {
         const { data, pagination } = await productsApi.getAll(filter);
+        console.log("API Response:", data);  // Xem dữ liệu trả về
 
         setProductList(data);
         setPagination(pagination);
