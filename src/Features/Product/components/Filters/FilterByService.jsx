@@ -27,7 +27,7 @@ const useStyle = makeStyles(() => ({
 
 function FilterByService({ filters = {}, onChange }) {
   const classes = useStyle();
-
+    
   const handleChange = (e) => {
     if (!onChange) return;
       const { name, checked } = e.target;

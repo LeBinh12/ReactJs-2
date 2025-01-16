@@ -6,6 +6,9 @@ import ProductList from '../components/ProductList';
 import { makeStyles } from '@mui/styles';
 import ProductSort from '../components/ProductSort';
 import ProductFilter from '../components/ProductFilter';
+import { useLocation, useNavigate } from 'react-router-dom';
+import queryString from 'query-string';
+
 
 const useStyle = makeStyles((theme) => ({
   root: {},
@@ -21,6 +24,9 @@ const useStyle = makeStyles((theme) => ({
 
 function ListPage() {
   const classes = useStyle();
+  const history = useNavigate();
+  const location = useLocation();
+  const queryParams = queryString.parse(location.search);
   const [productList, setProductList] = useState([]);
   const [loading, setLoding] = useState(true);
   const [pagination, setPagination] = useState({
@@ -28,12 +34,27 @@ function ListPage() {
     total: 10,
     page: 1,
   });
+  // const [filter, setFilter] = useState({
+  //   _page: 1,
+  //   _limit: 6,
+  //   order: 'asc',
+  //   sort_by: 'price',
+  // });
+
   const [filter, setFilter] = useState({
-    _page: 1,
-    _limit: 6,
-    order: 'asc',
-    sort_by: 'price',
+    ...queryParams,
+    _page: Number.parseInt(queryParams._page)|| 1,
+    _limit: Number.parseInt(queryParams._limit) || 6,
+    order: queryParams.order || 'asc',
+    sort_by: queryParams.sort_by || 'price',
   });
+
+  useEffect(() => { 
+    history({
+      pathname: location.pathname,
+      search: queryString.stringify(filter,)
+    })
+  },[history,location.pathname,filter]);
 
   useEffect(() => {
     (async () => {
