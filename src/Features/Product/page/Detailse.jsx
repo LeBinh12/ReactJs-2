@@ -5,6 +5,7 @@ import { makeStyles } from '@mui/styles';
 import ProductThumnail from '../components/ProductThumnail';
 import { useMatch } from 'react-router-dom';
 import useProductDetail from '../Hooks/useProductDetail';
+import ProductInfo from '../components/ProductInfo';
 
 Detailse.propTypes = {};
 const useStyle = makeStyles((theme) => ({
@@ -59,7 +60,7 @@ function Detailse() {
               item
                 className={classes.right}
             >
-              Prouct
+              <ProductInfo product={data} />
             </Grid>
           </Grid>
         </Paper>

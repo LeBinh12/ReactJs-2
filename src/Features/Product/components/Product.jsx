@@ -2,23 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Box, Skeleton, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { formatPrice } from 'utils';
 
 Product.propTypes = {
   product: PropTypes.object,
 };
 
 function Product({ product }) {
-
-    const history = useNavigate();
+  const history = useNavigate();
   const thumbnail = product.image ? product.image : 'https://placehold.jp/200x200.png';
 
-    const handleClick = () => { 
-        history(`/products/${product.id}`);
-    }
-    
+  const handleClick = () => {
+    history(`/products/${product.id}`);
+  };
+
   return (
     <div>
-      <Box padding={1} onClick={handleClick}>
+      <Box
+        padding={1}
+        onClick={handleClick}
+      >
         <Box
           padding={1}
           minHeight="215px"
@@ -37,7 +40,7 @@ function Product({ product }) {
             fontWeight="bold"
             mr={1}
           >
-            {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price)}
+            {formatPrice(product.price)}
           </Box>
           {product.sale > 0 ? `-${product.sale}%` : ''}
         </Typography>
