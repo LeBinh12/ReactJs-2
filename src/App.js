@@ -61,7 +61,7 @@ function App() {
           element={<NotFound></NotFound>}
         />
         <Route
-          path="/products"
+          path="/products/*"
           element={<ProductFeatures/>}
         />
         </Routes>
