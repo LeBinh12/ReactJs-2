@@ -11,6 +11,8 @@ import Header from './Components/Header';
 import { Button } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import ProductFeatures from 'Features/Product';
+import { RecoilRoot } from 'recoil';
+import TodoRecoil from 'Features/TodoRecoil';
 
 /*
 Props tức là dữ liệu truyền từ dữ liệu tk cha xuống con, và nó thể thay đổi đc ở tk con
@@ -21,6 +23,8 @@ function App() {
 
   return (
     <div className="App">
+          <RecoilRoot>
+
       <Header>
       </Header>
     
@@ -40,7 +44,8 @@ function App() {
         <Route
           path="/"
           element={<CounterFeature />}
-        />
+          />
+          <Route path="/TodoRecoil" element={ <TodoRecoil /> } />
         <Route
           path="/todos/*"
           element={<TodoFeature />}
@@ -59,7 +64,8 @@ function App() {
           path="/products"
           element={<ProductFeatures/>}
         />
-      </Routes>
+        </Routes>
+        </ RecoilRoot>
     </div>
   );
 
